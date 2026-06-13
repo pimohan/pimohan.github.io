@@ -3,634 +3,1553 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Indiramohan Prakasam | React Platform Architect | Principal Frontend Engineer</title>
+    <title>Indiramohan Prakasam — Principal Frontend Engineer</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%230A0E1A'/%3E%3Ctext x='50' y='68' font-family='monospace' font-size='52' font-weight='bold' text-anchor='middle' fill='%233B82F6'%3EIP%3C/text%3E%3C/svg%3E" />
     <meta
       name="description"
       content="Principal Frontend Engineer | React Platform Architect | Micro Frontends | Nx Monorepo | Performance Engineering | AI-Augmented Engineering"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#0A0E1A;--bg2:#0F1525;--bg3:#151C30;--border:#1E2A42;--accent:#3B82F6;--accent2:#06B6D4;--accent3:#8B5CF6;--text:#E2E8F0;--text2:#94A3B8;--text3:#64748B;--success:#10B981;--warn:#F59E0B;--mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between}
-.nav-brand{font-family:var(--mono);color:var(--accent);font-size:0.9rem;font-weight:500}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:var(--text2);text-decoration:none;font-size:0.85rem;font-weight:500;transition:color 0.2s}
-.nav-links a:hover{color:var(--accent)}
-.nav-cta{background:var(--accent);color:white;padding:0.4rem 1rem;border-radius:6px;font-size:0.8rem;font-weight:600;text-decoration:none;transition:opacity 0.2s}
-.nav-cta:hover{opacity:0.85;color:white}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0a0e1a;
+        --bg2: #0f1525;
+        --bg3: #151c30;
+        --border: #1e2a42;
+        --accent: #3b82f6;
+        --accent2: #06b6d4;
+        --accent3: #8b5cf6;
+        --text: #e2e8f0;
+        --text2: #94a3b8;
+        --text3: #64748b;
+        --success: #10b981;
+        --warn: #f59e0b;
+        --mono: "JetBrains Mono", monospace;
+        --sans: "Inter", sans-serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--sans);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: rgba(10, 14, 26, 0.92);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        padding: 0 2rem;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .nav-brand {
+        font-family: var(--mono);
+        color: var(--accent);
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+      .nav-links a {
+        color: var(--text2);
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+      .nav-cta {
+        background: var(--accent);
+        color: white;
+        padding: 0.4rem 1rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: opacity 0.2s;
+      }
+      .nav-cta:hover {
+        opacity: 0.85;
+        color: white;
+      }
 
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:80px 2rem 4rem;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(59,130,246,0.08) 0%,transparent 70%)}
-.hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 200px;gap:3rem;align-items:center}
-.hero-right{display:flex;flex-direction:column;align-items:center;gap:1rem}
-.hero-photo{width:160px;height:160px;border-radius:50%;border:3px solid var(--accent);object-fit:cover;box-shadow:0 0 30px rgba(59,130,246,0.3)}
-.hero-availability{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:var(--success);padding:0.35rem 0.75rem;border-radius:100px;font-size:0.7rem;display:flex;align-items:center;gap:0.4rem;font-family:var(--mono);white-space:nowrap}
-.hero-availability::before{content:'';width:6px;height:6px;background:var(--success);border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.3)}}
-.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);color:var(--accent);padding:0.35rem 0.9rem;border-radius:100px;font-family:var(--mono);font-size:0.75rem;margin-bottom:1.25rem}
-h1.hero-name{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:700;line-height:1.1;letter-spacing:-0.03em;margin-bottom:0.5rem}
-.hero-name span{background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 50%,var(--accent3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-title{font-size:1rem;color:var(--text2);font-weight:400;margin-bottom:1.25rem}
-.hero-summary{font-size:0.9rem;color:var(--text2);max-width:560px;line-height:1.8;margin-bottom:1.75rem}
-.hero-metrics{display:flex;gap:2rem;margin-bottom:1.75rem;flex-wrap:wrap}
-.metric-val{font-size:1.8rem;font-weight:700;color:var(--accent);font-family:var(--mono);line-height:1}
-.metric-label{font-size:0.7rem;color:var(--text3);margin-top:0.2rem}
-.hero-actions{display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:1.75rem}
-.btn-primary{background:var(--accent);color:white;padding:0.65rem 1.4rem;border-radius:8px;font-weight:600;text-decoration:none;font-size:0.85rem;transition:all 0.2s;display:inline-flex;align-items:center;gap:0.5rem}
-.btn-primary:hover{background:#2563EB;transform:translateY(-1px)}
-.btn-secondary{background:transparent;color:var(--text);padding:0.65rem 1.4rem;border-radius:8px;font-weight:500;text-decoration:none;font-size:0.85rem;border:1px solid var(--border);transition:all 0.2s;display:inline-flex;align-items:center;gap:0.5rem}
-.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
-.stack-label{font-size:0.7rem;color:var(--text3);margin-bottom:0.5rem;letter-spacing:0.08em;text-transform:uppercase}
-.stack-pills{display:flex;flex-wrap:wrap;gap:0.4rem}
-.pill{background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:0.22rem 0.6rem;border-radius:6px;font-family:var(--mono);font-size:0.68rem}
+      /* HERO */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 80px 2rem 4rem;
+        background: radial-gradient(
+          ellipse 80% 60% at 50% 0%,
+          rgba(59, 130, 246, 0.08) 0%,
+          transparent 70%
+        );
+      }
+      .hero-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 200px;
+        gap: 3rem;
+        align-items: center;
+      }
+      .hero-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      .hero-photo {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        border: 3px solid var(--accent);
+        object-fit: cover;
+        box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+      }
+      .hero-availability {
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        color: var(--success);
+        padding: 0.35rem 0.75rem;
+        border-radius: 100px;
+        font-size: 0.7rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-family: var(--mono);
+        white-space: nowrap;
+      }
+      .hero-availability::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        background: var(--success);
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+        flex-shrink: 0;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(1.3);
+        }
+      }
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        color: var(--accent);
+        padding: 0.35rem 0.9rem;
+        border-radius: 100px;
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        margin-bottom: 1.25rem;
+      }
+      h1.hero-name {
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.5rem;
+      }
+      .hero-name span {
+        background: linear-gradient(
+          135deg,
+          var(--accent) 0%,
+          var(--accent2) 50%,
+          var(--accent3) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero-title {
+        font-size: 1rem;
+        color: var(--text2);
+        font-weight: 400;
+        margin-bottom: 1.25rem;
+      }
+      .hero-summary {
+        font-size: 0.9rem;
+        color: var(--text2);
+        max-width: 560px;
+        line-height: 1.8;
+        margin-bottom: 1.75rem;
+      }
+      .hero-metrics {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 1.75rem;
+        flex-wrap: wrap;
+      }
+      .metric-val {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--accent);
+        font-family: var(--mono);
+        line-height: 1;
+      }
+      .metric-label {
+        font-size: 0.7rem;
+        color: var(--text3);
+        margin-top: 0.2rem;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.75rem;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: white;
+        padding: 0.65rem 1.4rem;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .btn-primary:hover {
+        background: #2563eb;
+        transform: translateY(-1px);
+      }
+      .btn-secondary {
+        background: transparent;
+        color: var(--text);
+        padding: 0.65rem 1.4rem;
+        border-radius: 8px;
+        font-weight: 500;
+        text-decoration: none;
+        font-size: 0.85rem;
+        border: 1px solid var(--border);
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .btn-secondary:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .stack-label {
+        font-size: 0.7rem;
+        color: var(--text3);
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .stack-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .pill {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        color: var(--text2);
+        padding: 0.22rem 0.6rem;
+        border-radius: 6px;
+        font-family: var(--mono);
+        font-size: 0.68rem;
+      }
 
-section{padding:5rem 2rem}
-.section-inner{max-width:1100px;margin:0 auto}
-.section-label{font-family:var(--mono);font-size:0.7rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem}
-.section-title{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:0.75rem}
-.section-desc{color:var(--text2);max-width:560px;line-height:1.8;margin-bottom:2.5rem}
-.divider{width:40px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;margin-bottom:0.75rem}
-.bg2{background:var(--bg2)}
+      section {
+        padding: 5rem 2rem;
+      }
+      .section-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .section-label {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        color: var(--accent);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+      }
+      .section-title {
+        font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.75rem;
+      }
+      .section-desc {
+        color: var(--text2);
+        max-width: 560px;
+        line-height: 1.8;
+        margin-bottom: 2.5rem;
+      }
+      .divider {
+        width: 40px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        border-radius: 2px;
+        margin-bottom: 0.75rem;
+      }
+      .bg2 {
+        background: var(--bg2);
+      }
 
-/* SPECS */
-.spec-grid{display:flex;flex-wrap:wrap;gap:0.5rem}
-.spec-tag{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:0.4rem 0.85rem;border-radius:8px;font-size:0.8rem;font-weight:500;transition:all 0.2s;cursor:default}
-.spec-tag:hover{border-color:var(--accent);color:var(--accent);background:rgba(59,130,246,0.08)}
+      /* SPECS */
+      .spec-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .spec-tag {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 0.4rem 0.85rem;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        transition: all 0.2s;
+        cursor: default;
+      }
+      .spec-tag:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        background: rgba(59, 130, 246, 0.08);
+      }
 
-/* SKILLS */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem}
-.skill-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;transition:border-color 0.2s}
-.skill-card:hover{border-color:var(--accent)}
-.skill-card-title{font-size:0.7rem;color:var(--accent);font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem}
-.skill-items{display:flex;flex-wrap:wrap;gap:0.3rem}
-.skill-item{background:var(--bg3);color:var(--text2);padding:0.2rem 0.5rem;border-radius:4px;font-size:0.74rem}
+      /* SKILLS */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+        gap: 1.25rem;
+      }
+      .skill-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.4rem;
+        transition: border-color 0.2s;
+      }
+      .skill-card:hover {
+        border-color: var(--accent);
+      }
+      .skill-card-title {
+        font-size: 0.7rem;
+        color: var(--accent);
+        font-family: var(--mono);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+      }
+      .skill-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+      }
+      .skill-item {
+        background: var(--bg3);
+        color: var(--text2);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.74rem;
+      }
 
-/* EXPERIENCE */
-.exp-list{display:flex;flex-direction:column;gap:1.25rem}
-.exp-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:border-color 0.2s}
-.exp-card:hover{border-color:var(--accent)}
-.exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.6rem}
-.exp-title{font-size:0.93rem;font-weight:600}
-.exp-company{color:var(--accent);font-size:0.8rem;font-weight:500;margin-top:0.1rem}
-.exp-dates{font-family:var(--mono);font-size:0.7rem;color:var(--text3)}
-.exp-tag{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:var(--accent);padding:0.12rem 0.45rem;border-radius:4px;font-size:0.66rem;font-weight:500;margin-left:0.4rem}
-.exp-desc{color:var(--text2);font-size:0.82rem;line-height:1.7;margin-bottom:0.75rem}
-.exp-metrics{display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:0.75rem}
-.exp-metric{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);color:var(--success);padding:0.12rem 0.5rem;border-radius:4px;font-size:0.7rem;font-family:var(--mono)}
-.exp-stack{display:flex;flex-wrap:wrap;gap:0.3rem}
-.exp-stack span{background:var(--bg3);color:var(--text3);padding:0.12rem 0.4rem;border-radius:4px;font-size:0.68rem;border:1px solid var(--border)}
+      /* EXPERIENCE */
+      .exp-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+      .exp-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: border-color 0.2s;
+      }
+      .exp-card:hover {
+        border-color: var(--accent);
+      }
+      .exp-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 0.6rem;
+      }
+      .exp-title {
+        font-size: 0.93rem;
+        font-weight: 600;
+      }
+      .exp-company {
+        color: var(--accent);
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin-top: 0.1rem;
+      }
+      .exp-dates {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        color: var(--text3);
+      }
+      .exp-tag {
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        color: var(--accent);
+        padding: 0.12rem 0.45rem;
+        border-radius: 4px;
+        font-size: 0.66rem;
+        font-weight: 500;
+        margin-left: 0.4rem;
+      }
+      .exp-desc {
+        color: var(--text2);
+        font-size: 0.82rem;
+        line-height: 1.7;
+        margin-bottom: 0.75rem;
+      }
+      .exp-metrics {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin-bottom: 0.75rem;
+      }
+      .exp-metric {
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        color: var(--success);
+        padding: 0.12rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-family: var(--mono);
+      }
+      .exp-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+      }
+      .exp-stack span {
+        background: var(--bg3);
+        color: var(--text3);
+        padding: 0.12rem 0.4rem;
+        border-radius: 4px;
+        font-size: 0.68rem;
+        border: 1px solid var(--border);
+      }
 
-/* PROJECTS */
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem}
-.project-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:all 0.2s;display:flex;flex-direction:column}
-.project-card:hover{border-color:var(--accent);transform:translateY(-2px)}
-.project-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.6rem}
-.project-name{font-size:0.93rem;font-weight:600}
-.project-dur{font-family:var(--mono);font-size:0.68rem;color:var(--text3)}
-.project-desc{color:var(--text2);font-size:0.8rem;line-height:1.7;margin-bottom:0.75rem;flex:1}
-.project-outcome{background:rgba(59,130,246,0.08);border-left:3px solid var(--accent);padding:0.45rem 0.7rem;border-radius:0 6px 6px 0;margin-bottom:0.75rem}
-.project-outcome p{font-size:0.76rem;color:var(--accent);font-weight:500}
-.project-stack{display:flex;flex-wrap:wrap;gap:0.3rem}
-.project-stack span{background:var(--bg3);color:var(--text3);padding:0.12rem 0.4rem;border-radius:4px;font-size:0.66rem;border:1px solid var(--border);font-family:var(--mono)}
+      /* PROJECTS */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+        gap: 1.25rem;
+      }
+      .project-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: all 0.2s;
+        display: flex;
+        flex-direction: column;
+      }
+      .project-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-2px);
+      }
+      .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 0.6rem;
+      }
+      .project-name {
+        font-size: 0.93rem;
+        font-weight: 600;
+      }
+      .project-dur {
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        color: var(--text3);
+      }
+      .project-desc {
+        color: var(--text2);
+        font-size: 0.8rem;
+        line-height: 1.7;
+        margin-bottom: 0.75rem;
+        flex: 1;
+      }
+      .project-outcome {
+        background: rgba(59, 130, 246, 0.08);
+        border-left: 3px solid var(--accent);
+        padding: 0.45rem 0.7rem;
+        border-radius: 0 6px 6px 0;
+        margin-bottom: 0.75rem;
+      }
+      .project-outcome p {
+        font-size: 0.76rem;
+        color: var(--accent);
+        font-weight: 500;
+      }
+      .project-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+      }
+      .project-stack span {
+        background: var(--bg3);
+        color: var(--text3);
+        padding: 0.12rem 0.4rem;
+        border-radius: 4px;
+        font-size: 0.66rem;
+        border: 1px solid var(--border);
+        font-family: var(--mono);
+      }
 
-/* GITHUB */
-.github-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1rem}
-.repo-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:border-color 0.2s;text-decoration:none;display:flex;flex-direction:column}
-.repo-card:hover{border-color:var(--accent)}
-.repo-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem}
-.repo-name{font-family:var(--mono);color:var(--accent);font-size:0.8rem;font-weight:500}
-.repo-badge{font-size:0.63rem;padding:0.12rem 0.4rem;border-radius:4px;font-weight:500;flex-shrink:0}
-.badge-live{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:var(--success)}
-.badge-private{background:rgba(100,116,139,0.15);border:1px solid rgba(100,116,139,0.3);color:var(--text3)}
-.badge-soon{background:rgba(139,92,246,0.1);border:1px dashed rgba(139,92,246,0.3);color:var(--accent3)}
-.repo-desc{color:var(--text2);font-size:0.76rem;line-height:1.6;margin-bottom:0.75rem;flex:1}
-.repo-footer{display:flex;align-items:center;gap:0.75rem;margin-top:auto}
-.repo-lang{display:flex;align-items:center;gap:0.3rem;font-size:0.7rem;color:var(--text3)}
-.repo-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.repo-updated{font-size:0.68rem;color:var(--text3);margin-left:auto;font-family:var(--mono)}
-.github-cta{margin-top:2rem;text-align:center}
-.github-cta a{display:inline-flex;align-items:center;gap:0.5rem;color:var(--text2);text-decoration:none;font-size:0.85rem;border:1px solid var(--border);padding:0.6rem 1.25rem;border-radius:8px;transition:all 0.2s}
-.github-cta a:hover{border-color:var(--accent);color:var(--accent)}
-.github-note{background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.15);border-radius:10px;padding:1rem 1.25rem;margin-bottom:2rem;font-size:0.82rem;color:var(--text2);line-height:1.7}
-.github-note strong{color:var(--text)}
+      /* GITHUB */
+      .github-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 1rem;
+      }
+      .repo-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1.2rem;
+        transition: border-color 0.2s;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+      }
+      .repo-card:hover {
+        border-color: var(--accent);
+      }
+      .repo-card-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 0.5rem;
+      }
+      .repo-name {
+        font-family: var(--mono);
+        color: var(--accent);
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+      .repo-badge {
+        font-size: 0.63rem;
+        padding: 0.12rem 0.4rem;
+        border-radius: 4px;
+        font-weight: 500;
+        flex-shrink: 0;
+      }
+      .badge-live {
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        color: var(--success);
+      }
+      .badge-private {
+        background: rgba(100, 116, 139, 0.15);
+        border: 1px solid rgba(100, 116, 139, 0.3);
+        color: var(--text3);
+      }
+      .badge-soon {
+        background: rgba(139, 92, 246, 0.1);
+        border: 1px dashed rgba(139, 92, 246, 0.3);
+        color: var(--accent3);
+      }
+      .repo-desc {
+        color: var(--text2);
+        font-size: 0.76rem;
+        line-height: 1.6;
+        margin-bottom: 0.75rem;
+        flex: 1;
+      }
+      .repo-footer {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: auto;
+      }
+      .repo-lang {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.7rem;
+        color: var(--text3);
+      }
+      .repo-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .repo-updated {
+        font-size: 0.68rem;
+        color: var(--text3);
+        margin-left: auto;
+        font-family: var(--mono);
+      }
+      .github-cta {
+        margin-top: 2rem;
+        text-align: center;
+      }
+      .github-cta a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text2);
+        text-decoration: none;
+        font-size: 0.85rem;
+        border: 1px solid var(--border);
+        padding: 0.6rem 1.25rem;
+        border-radius: 8px;
+        transition: all 0.2s;
+      }
+      .github-cta a:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .github-note {
+        background: rgba(59, 130, 246, 0.05);
+        border: 1px solid rgba(59, 130, 246, 0.15);
+        border-radius: 10px;
+        padding: 1rem 1.25rem;
+        margin-bottom: 2rem;
+        font-size: 0.82rem;
+        color: var(--text2);
+        line-height: 1.7;
+      }
+      .github-note strong {
+        color: var(--text);
+      }
 
-/* CERTS */
-.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
-.cert-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.2rem;display:flex;gap:0.85rem;align-items:flex-start;transition:border-color 0.2s}
-.cert-card:hover{border-color:var(--accent2)}
-.cert-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem}
-.cert-icon.ai{background:rgba(139,92,246,0.15)}
-.cert-icon.ms{background:rgba(6,182,212,0.15)}
-.cert-name{font-size:0.82rem;font-weight:600;margin-bottom:0.2rem}
-.cert-issuer{font-size:0.73rem;color:var(--text2)}
-.cert-status{display:inline-block;padding:0.1rem 0.4rem;border-radius:4px;font-size:0.66rem;margin-top:0.3rem}
-.cert-progress{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:var(--warn)}
-.cert-done{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:var(--success)}
+      /* CERTS */
+      .certs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+      .cert-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1.2rem;
+        display: flex;
+        gap: 0.85rem;
+        align-items: flex-start;
+        transition: border-color 0.2s;
+      }
+      .cert-card:hover {
+        border-color: var(--accent2);
+      }
+      .cert-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 1rem;
+      }
+      .cert-icon.ai {
+        background: rgba(139, 92, 246, 0.15);
+      }
+      .cert-icon.ms {
+        background: rgba(6, 182, 212, 0.15);
+      }
+      .cert-name {
+        font-size: 0.82rem;
+        font-weight: 600;
+        margin-bottom: 0.2rem;
+      }
+      .cert-issuer {
+        font-size: 0.73rem;
+        color: var(--text2);
+      }
+      .cert-status {
+        display: inline-block;
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+        font-size: 0.66rem;
+        margin-top: 0.3rem;
+      }
+      .cert-progress {
+        background: rgba(245, 158, 11, 0.1);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        color: var(--warn);
+      }
+      .cert-done {
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        color: var(--success);
+      }
 
-/* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.contact-links{display:flex;flex-direction:column;gap:0.85rem}
-.contact-link{display:flex;align-items:center;gap:0.85rem;background:var(--bg2);border:1px solid var(--border);padding:0.85rem 1rem;border-radius:10px;text-decoration:none;transition:all 0.2s;color:var(--text)}
-.contact-link:hover{border-color:var(--accent);color:var(--accent)}
-.contact-link-icon{width:32px;height:32px;border-radius:7px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0}
-.contact-link-label{font-size:0.68rem;color:var(--text3)}
-.contact-link-val{font-size:0.82rem;font-weight:500}
+      /* CONTACT */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .contact-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+      .contact-link {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        padding: 0.85rem 1rem;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: all 0.2s;
+        color: var(--text);
+      }
+      .contact-link:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .contact-link-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 7px;
+        background: var(--bg3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+      }
+      .contact-link-label {
+        font-size: 0.68rem;
+        color: var(--text3);
+      }
+      .contact-link-val {
+        font-size: 0.82rem;
+        font-weight: 500;
+      }
 
-footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.5rem;text-align:center}
-footer p{color:var(--text3);font-size:0.78rem}
-footer span{color:var(--accent);font-family:var(--mono)}
+      footer {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        padding: 1.5rem;
+        text-align: center;
+      }
+      footer p {
+        color: var(--text3);
+        font-size: 0.78rem;
+      }
+      footer span {
+        color: var(--accent);
+        font-family: var(--mono);
+      }
 
-@media(max-width:768px){
-  .nav-links{display:none}
-  .hero-inner{grid-template-columns:1fr;gap:2rem}
-  .hero-right{order:-1;flex-direction:row;align-items:center;gap:1rem}
-  .hero-photo{width:80px;height:80px}
-  .contact-grid{grid-template-columns:1fr;gap:2rem}
-}
-</style>
-</head>
-<body>
-
-<nav>
-  <span class="nav-brand">icodeeasy.com</span>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#github">GitHub</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <div style="display:flex;gap:0.5rem">
-        <a href="resumes/Indiramohan_Prakasam_Resume.pdf" download="Indiramohan_Prakasam_Resume.pdf" class="nav-cta">Download Resume</a>
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .hero-inner {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        .hero-right {
+          order: -1;
+          flex-direction: row;
+          align-items: center;
+          gap: 1rem;
+        }
+        .hero-photo {
+          width: 80px;
+          height: 80px;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <span class="nav-brand">icodeeasy.com</span>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#github">GitHub</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div style="display: flex; gap: 0.5rem">
+        <a
+          href="resumes/Indiramohan_Prakasam_Resume.pdf"
+          download="Indiramohan_Prakasam_Resume.pdf"
+          class="nav-cta"
+        >
+          Download Resume
+        </a>
         <a href="mailto:pimohan.mca@gmail.com" class="nav-cta">Hire Me</a>
       </div>
-</nav>
+    </nav>
 
-<!-- HERO -->
-<section class="hero" id="about">
-  <div class="hero-inner">
-    <div class="hero-left">
-      <div class="hero-tag">Principal Frontend Engineer · Chennai, INDIA</div>
-      <h1 class="hero-name">Indiramohan<br><span>Prakasam</span></h1>
-      <p class="hero-title">React Platform Architect &nbsp;·&nbsp; Micro Frontends &nbsp;·&nbsp; 18+ Years IC</p>
-      <p class="hero-summary">I architect frontend platforms at scale — from 1.1M+ user OTT streaming platforms to high-frequency trading UIs processing 500+ concurrent real-time sessions. Deep expertise in React ecosystems, micro-frontend architecture, Nx Monorepo, and AI-augmented engineering.</p>
-      <div class="hero-metrics">
-        <div class="metric"><div class="metric-val">73%</div><div class="metric-label">Faster startup</div></div>
-        <div class="metric"><div class="metric-val">40%</div><div class="metric-label">Build reduction</div></div>
-        <div class="metric"><div class="metric-val">1.1M+</div><div class="metric-label">Weekly users</div></div>
-        <div class="metric"><div class="metric-val">18+</div><div class="metric-label">Years IC</div></div>
-      </div>
-      <div class="hero-actions">
-        <a href="#experience" class="btn-primary">View Experience →</a>
-        <a href="https://linkedin.com/in/indiramohan-prakasam-b03b4867" class="btn-secondary" target="_blank">LinkedIn ↗</a>
-        <a href="https://github.com/pimohan" class="btn-secondary" target="_blank">GitHub ↗</a>
-      </div>
-      <p class="stack-label">Core Stack</p>
-      <div class="stack-pills">
-        <span class="pill">React 18/19</span><span class="pill">Next.js</span><span class="pill">TypeScript</span>
-        <span class="pill">Nx Monorepo</span><span class="pill">Micro-Frontends</span><span class="pill">Module Federation</span>
-        <span class="pill">Node.js</span><span class="pill">gRPC</span><span class="pill">Azure</span><span class="pill">AI-Augmented Dev</span>
-      </div>
-    </div>
-    <div class="hero-right">
-      <img
-        src="https://avatars.githubusercontent.com/pimohan" <!-- To use your own photo: upload photo.jpg to your GitHub repo and change src to ./photo.jpg -->
-        class="hero-photo"
-        alt="Indiramohan Prakasam"
-      />
-      <div class="hero-availability">● Available · 15 days</div>
-    </div>
-  </div>
-</section>
-
-<!-- SPECIALIZATIONS -->
-<section class="bg2">
-  <div class="section-inner">
-    <p class="section-label">Architecture Specializations</p>
-    <div class="divider"></div>
-    <h2 class="section-title">Technical Depth</h2>
-    <p class="section-desc">Architecture domains I own end-to-end as an individual contributor — from design decision to production delivery.</p>
-    <div class="spec-grid">
-      <span class="spec-tag">Frontend Platform Engineering</span>
-      <span class="spec-tag">Micro-Frontend Architecture</span>
-      <span class="spec-tag">Nx Monorepo Platforms</span>
-      <span class="spec-tag">Module Federation</span>
-      <span class="spec-tag">Design Systems</span>
-      <span class="spec-tag">Developer Experience (DX)</span>
-      <span class="spec-tag">Performance Engineering</span>
-      <span class="spec-tag">Build Infrastructure</span>
-      <span class="spec-tag">Technical Strategy</span>
-      <span class="spec-tag">Platform Governance</span>
-      <span class="spec-tag">AI-Augmented Engineering</span>
-      <span class="spec-tag">Architecture Decision Records (ADR)</span>
-      <span class="spec-tag">Technical Mentorship</span>
-      <span class="spec-tag">Config-Driven UI Frameworks</span>
-      <span class="spec-tag">Real-Time Data Visualization</span>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-inner">
-    <p class="section-label">Technical Skills</p>
-    <div class="divider"></div>
-    <h2 class="section-title">What I Build With</h2>
-    <p class="section-desc">Hands-on expertise across the full frontend platform stack — from component architecture to build infrastructure.</p>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <p class="skill-card-title">React & Frontend Platform</p>
-        <div class="skill-items">
-          <span class="skill-item">React 18/19</span><span class="skill-item">Next.js SSR/SSG/ISR</span>
-          <span class="skill-item">TypeScript</span><span class="skill-item">JavaScript ES6+</span>
-          <span class="skill-item">Redux Toolkit</span><span class="skill-item">React Query</span>
-          <span class="skill-item">Custom Hooks</span><span class="skill-item">Component Architecture</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <p class="skill-card-title">Architecture & Platform</p>
-        <div class="skill-items">
-          <span class="skill-item">Micro-Frontend</span><span class="skill-item">Module Federation</span>
-          <span class="skill-item">Nx Monorepo</span><span class="skill-item">Design Systems</span>
-          <span class="skill-item">Config-Driven UI</span><span class="skill-item">ADR Authoring</span>
-          <span class="skill-item">Platform Governance</span><span class="skill-item">Component Libraries</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <p class="skill-card-title">Performance & Build Tooling</p>
-        <div class="skill-items">
-          <span class="skill-item">Webpack 5</span><span class="skill-item">RSPack</span>
-          <span class="skill-item">Vite</span><span class="skill-item">Code Splitting</span>
-          <span class="skill-item">Lazy Loading</span><span class="skill-item">CDN Optimization</span>
-          <span class="skill-item">Web Workers</span><span class="skill-item">Core Web Vitals</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <p class="skill-card-title">UI, Visualization & Testing</p>
-        <div class="skill-items">
-          <span class="skill-item">Tailwind CSS</span><span class="skill-item">Material UI</span>
-          <span class="skill-item">Ant Design</span><span class="skill-item">AG Grid</span>
-          <span class="skill-item">Highcharts</span><span class="skill-item">D3.js</span>
-          <span class="skill-item">Jest</span><span class="skill-item">React Testing Library</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <p class="skill-card-title">Cloud & Integration</p>
-        <div class="skill-items">
-          <span class="skill-item">Node.js</span><span class="skill-item">Azure</span>
-          <span class="skill-item">Azure DevOps</span><span class="skill-item">REST APIs</span>
-          <span class="skill-item">gRPC Streaming</span><span class="skill-item">WebSockets</span>
-          <span class="skill-item">MongoDB</span><span class="skill-item">SQL Server</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <p class="skill-card-title">AI-Assisted Engineering</p>
-        <div class="skill-items">
-          <span class="skill-item">GitHub Copilot</span><span class="skill-item">Claude</span>
-          <span class="skill-item">ChatGPT</span><span class="skill-item">Prompt Engineering</span>
-          <span class="skill-item">AI Code Generation</span><span class="skill-item">AI-Assisted Debugging</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section class="bg2" id="experience">
-  <div class="section-inner">
-    <p class="section-label">Work Experience</p>
-    <div class="divider"></div>
-    <h2 class="section-title">18+ Years of Platform Engineering</h2>
-    <p class="section-desc">Individual contributor track — owning technical architecture without people management, across OTT, fintech, enterprise SaaS, and banking.</p>
-    <div class="exp-list">
-      <div class="exp-card">
-        <div class="exp-header">
-          <div>
-            <div class="exp-title">Principal Frontend Engineer <span class="exp-tag">Contract</span></div>
-            <div class="exp-company">Primesoft · Quickplay OTT (TVNZ) · 1.1M+ WAU</div>
+    <!-- HERO -->
+    <section class="hero" id="about">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <div class="hero-tag">
+            Principal Frontend Engineer · Chennai, INDIA
           </div>
-          <span class="exp-dates">Nov 2025 – Apr 2026</span>
-        </div>
-        <p class="exp-desc">Sole platform architect for Quickplay OTT. Authored Architecture Decision Records and defined all platform architecture decisions across Smart TV and web.</p>
-        <div class="exp-metrics">
-          <span class="exp-metric">73% faster startup</span><span class="exp-metric">40% faster delivery</span>
-          <span class="exp-metric">30% productivity gain</span><span class="exp-metric">1.1M+ WAU</span>
-        </div>
-        <div class="exp-stack">
-          <span>React</span><span>Next.js</span><span>TypeScript</span><span>Webpack 5</span>
-          <span>Tizen/webOS</span><span>CDN</span><span>Azure DevOps</span>
-        </div>
-      </div>
-      <div class="exp-card">
-        <div class="exp-header">
-          <div>
-            <div class="exp-title">Frontend Architect <span class="exp-tag">Contract</span></div>
-            <div class="exp-company">Photon Interactive · JPMC Corporate Banking</div>
+          <h1 class="hero-name">Indiramohan<br /><span>Prakasam</span></h1>
+          <p class="hero-title">
+            React Platform Architect &nbsp;·&nbsp; Micro Frontends &nbsp;·&nbsp;
+            18+ Years IC
+          </p>
+          <p class="hero-summary">
+            I architect frontend platforms at scale — from 1.1M+ user OTT
+            streaming platforms to high-frequency trading UIs processing 500+
+            concurrent real-time sessions. Deep expertise in React ecosystems,
+            micro-frontend architecture, Nx Monorepo, and AI-augmented
+            engineering.
+          </p>
+          <div class="hero-metrics">
+            <div class="metric">
+              <div class="metric-val">73%</div>
+              <div class="metric-label">Faster startup</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">40%</div>
+              <div class="metric-label">Build reduction</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">1.1M+</div>
+              <div class="metric-label">Weekly users</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">18+</div>
+              <div class="metric-label">Years IC</div>
+            </div>
           </div>
-          <span class="exp-dates">Mar 2025 – Aug 2025</span>
-        </div>
-        <p class="exp-desc">Designed Nx Monorepo + RSPack micro-frontend architecture for JPMC. Authored API contract standards adopted across 3 backend teams without management authority.</p>
-        <div class="exp-metrics">
-          <span class="exp-metric">40% faster builds</span><span class="exp-metric">50+ enterprise modules</span>
-          <span class="exp-metric">10K+ enterprise users</span>
-        </div>
-        <div class="exp-stack">
-          <span>Nx Monorepo</span><span>RSPack</span><span>Module Federation</span>
-          <span>React</span><span>TypeScript</span><span>Ant Design</span>
-        </div>
-      </div>
-      <div class="exp-card">
-        <div class="exp-header">
-          <div>
-            <div class="exp-title">Senior Lead Frontend Engineer</div>
-            <div class="exp-company">AX2 Technologies · Real-Time Trading Platform</div>
+          <div class="hero-actions">
+            <a href="#experience" class="btn-primary">View Experience →</a>
+            <a
+              href="https://linkedin.com/in/indiramohan-prakasam-b03b4867"
+              class="btn-secondary"
+              target="_blank"
+              >LinkedIn ↗</a
+            >
+            <a
+              href="https://github.com/pimohan"
+              class="btn-secondary"
+              target="_blank"
+              >GitHub ↗</a
+            >
           </div>
-          <span class="exp-dates">Aug 2021 – Nov 2023</span>
-        </div>
-        <p class="exp-desc">Technical architect for high-performance trading UI. Solved critical performance problem (100K+ row virtualized rendering) blocking the product roadmap for 6+ months.</p>
-        <div class="exp-metrics">
-          <span class="exp-metric">40% lower latency</span><span class="exp-metric">500+ concurrent sessions</span>
-          <span class="exp-metric">100K+ row datasets</span>
-        </div>
-        <div class="exp-stack">
-          <span>React</span><span>gRPC</span><span>Web Workers</span>
-          <span>WebSockets</span><span>D3.js</span><span>SQL Server</span>
-        </div>
-      </div>
-      <div class="exp-card">
-        <div class="exp-header">
-          <div>
-            <div class="exp-title">Senior Frontend Engineer</div>
-            <div class="exp-company">Capita PTE Singapore · Enterprise HR Platform</div>
+          <p class="stack-label">Core Stack</p>
+          <div class="stack-pills">
+            <span class="pill">React 18/19</span
+            ><span class="pill">Next.js</span
+            ><span class="pill">TypeScript</span>
+            <span class="pill">Nx Monorepo</span
+            ><span class="pill">Micro-Frontends</span
+            ><span class="pill">Module Federation</span>
+            <span class="pill">Node.js</span><span class="pill">gRPC</span
+            ><span class="pill">Azure</span
+            ><span class="pill">AI-Augmented Dev</span>
           </div>
-          <span class="exp-dates">May 2019 – Feb 2021</span>
         </div>
-        <p class="exp-desc">Architected enterprise HR platform with no-code form builder supporting 20K+ employees. Designed workflow automation engine with RBAC and dynamic form rendering.</p>
-        <div class="exp-metrics">
-          <span class="exp-metric">20K+ employees</span><span class="exp-metric">30% config reduction</span>
-        </div>
-        <div class="exp-stack">
-          <span>React</span><span>TypeScript</span><span>No-Code Forms</span>
-          <span>Workflow Automation</span><span>RBAC</span><span>SQL Server</span>
-        </div>
-      </div>
-      <div class="exp-card">
-        <div class="exp-header">
-          <div>
-            <div class="exp-title">Earlier Career · Individual Contributor</div>
-            <div class="exp-company">HPE · Experis (US) · Fabricnet · Highland · Satyam · Wipro</div>
-          </div>
-          <span class="exp-dates">2004 – 2019</span>
-        </div>
-        <p class="exp-desc">Enterprise frontend solutions for American Airlines, HNFS (3M+ US military), Dell, Microsoft, Verizon, Citibank UK, and Capital One across aviation, healthcare, fintech, and banking domains.</p>
-        <div class="exp-stack">
-          <span>Angular</span><span>.NET</span><span>ASP.NET MVC</span>
-          <span>TIBCO EMS</span><span>SQL Server</span><span>WCF</span>
+        <div class="hero-right">
+          <img
+            src="https://avatars.githubusercontent.com/pimohan"
+            class="hero-photo"
+            alt="Indiramohan Prakasam"
+          />
+          <div class="hero-availability">● Available · 15 days</div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-inner">
-    <p class="section-label">Key Platform Projects</p>
-    <div class="divider"></div>
-    <h2 class="section-title">Production Platforms I Architected</h2>
-    <p class="section-desc">Real-world platforms built at scale — each with measurable business impact and documented architecture decisions.</p>
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-header">
-          <span class="project-name">Quickplay OTT — TVNZ</span>
-          <span class="project-dur">6 months</span>
-        </div>
-        <p class="project-desc">Scalable frontend platform for TVNZ's OTT streaming product serving 1.1M+ weekly active users across Smart TVs and web. Sole technical architect — authored all ADRs.</p>
-        <div class="project-outcome"><p>73% faster startup · 1.1M+ WAU · Tizen/webOS</p></div>
-        <div class="project-stack">
-          <span>React</span><span>Next.js</span><span>Webpack 5</span><span>CDN</span><span>Tizen</span><span>webOS</span>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-header">
-          <span class="project-name">Graphite UI — JPMC Banking</span>
-          <span class="project-dur">6 months</span>
-        </div>
-        <p class="project-desc">Enterprise micro-frontend platform for JP Morgan Chase corporate banking powering payments, reporting, and workflow modules for 10K+ enterprise users.</p>
-        <div class="project-outcome"><p>40% faster builds · 50+ modules · 10K+ users</p></div>
-        <div class="project-stack">
-          <span>Nx Monorepo</span><span>RSPack</span><span>Module Federation</span><span>React</span><span>Ant Design</span>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-header">
-          <span class="project-name">Sigma Viewer — Trading</span>
-          <span class="project-dur">24 months</span>
-        </div>
-        <p class="project-desc">High-performance real-time trading UI with gRPC streaming, Web Workers, and virtualized rendering for 100K+ row financial datasets.</p>
-        <div class="project-outcome"><p>40% lower latency · 500+ concurrent sessions</p></div>
-        <div class="project-stack">
-          <span>React</span><span>gRPC</span><span>Web Workers</span><span>D3.js</span><span>WebSockets</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GITHUB -->
-<section class="bg2" id="github">
-  <div class="section-inner">
-    <p class="section-label">GitHub — github.com/pimohan</p>
-    <div class="divider"></div>
-    <h2 class="section-title">Repositories & Open Source</h2>
-    <p class="section-desc">Existing public repositories plus upcoming architecture showcases — micro-frontend platforms, performance patterns, and AI integrations.</p>
-
-    <div class="github-note">
-      <strong>Note on private repos:</strong> WebApp, AspNetWebAppUI, stock-api, and stock-client are private repositories — not publicly visible but demonstrate full-stack development across .NET, JavaScript, and CSS. Architecture showcases for Principal-level platform patterns are currently in development.
-    </div>
-
-    <div class="github-grid">
-
-      <!-- EXISTING PUBLIC REPOS -->
-      <a href="https://github.com/pimohan/x-twitter" target="_blank" class="repo-card">
-        <div class="repo-card-top">
-          <span class="repo-name">x-twitter</span>
-          <span class="repo-badge badge-live">Public</span>
-        </div>
-        <p class="repo-desc">Twitter/X UI clone built with TypeScript — demonstrating modern React component architecture, responsive design patterns, and social feed implementation.</p>
-        <div class="repo-footer">
-          <span class="repo-lang"><span class="repo-dot" style="background:#3178C6"></span>TypeScript</span>
-          <span class="repo-updated">Feb 2025</span>
-        </div>
-      </a>
-
-      <a href="https://github.com/pimohan/foodiedelight" target="_blank" class="repo-card">
-        <div class="repo-card-top">
-          <span class="repo-name">foodiedelight</span>
-          <span class="repo-badge badge-live">Public</span>
-        </div>
-        <p class="repo-desc">Food delivery platform UI built with TypeScript — showcasing product listing, cart management, and order workflow UI patterns in a real-world consumer app.</p>
-        <div class="repo-footer">
-          <span class="repo-lang"><span class="repo-dot" style="background:#3178C6"></span>TypeScript</span>
-          <span class="repo-updated">Aug 2024</span>
-        </div>
-      </a>
-
-      <a href="https://github.com/pimohan/todo-simple-app" target="_blank" class="repo-card">
-        <div class="repo-card-top">
-          <span class="repo-name">todo-simple-app</span>
-          <span class="repo-badge badge-live">Public</span>
-        </div>
-        <p class="repo-desc">Clean TypeScript task management application — demonstrating hooks architecture, state management patterns, and component-driven development best practices.</p>
-        <div class="repo-footer">
-          <span class="repo-lang"><span class="repo-dot" style="background:#3178C6"></span>TypeScript</span>
-          <span class="repo-updated">Aug 2024</span>
-        </div>
-      </a>
-
-      <a href="https://github.com/pimohan/mern-stocks" target="_blank" class="repo-card">
-        <div class="repo-card-top">
-          <span class="repo-name">mern-stocks</span>
-          <span class="repo-badge badge-live">Public</span>
-        </div>
-        <p class="repo-desc">Full-stack MERN stock tracking application — React frontend with Node.js/Express backend, MongoDB data layer, and real-time stock data visualization.</p>
-        <div class="repo-footer">
-          <span class="repo-lang"><span class="repo-dot" style="background:#A97BFF"></span>CSS + JavaScript</span>
-          <span class="repo-updated">Aug 2021</span>
-        </div>
-      </a>
-
-      <!-- COMING SOON -->
-      <div class="repo-card">
-        <div class="repo-card-top">
-          <span class="repo-name">🏗️ nx-micro-frontend-platform</span>
-          <span class="repo-badge badge-soon">Coming Soon</span>
-        </div>
-        <p class="repo-desc">Reference Nx Monorepo + Module Federation micro-frontend platform with ADRs and architecture diagrams — same pattern used in JPMC banking engagement.</p>
-        <div class="repo-footer">
-          <span class="repo-lang"><span class="repo-dot" style="background:#3178C6"></span>TypeScript</span>
-        </div>
-      </div>
-
-      <div class="repo-card">
-        <div class="repo-card-top">
-          <span class="repo-name">⚡ react-performance-patterns</span>
-          <span class="repo-badge badge-soon">Coming Soon</span>
-        </div>
-        <p class="repo-desc">Code splitting, lazy loading, virtualization, and Web Worker patterns with before/after benchmarks and Core Web Vitals improvements.</p>
-        <div class="repo-footer">
-          <span class="repo-lang"><span class="repo-dot" style="background:#F7DF1E"></span>JavaScript</span>
-        </div>
-      </div>
-
-      <div class="repo-card">
-        <div class="repo-card-top">
-          <span class="repo-name">🤖 ai-powered-react-fastapi</span>
-          <span class="repo-badge badge-soon">Coming Soon</span>
-        </div>
-        <p class="repo-desc">Full-stack AI application — React + Next.js frontend, FastAPI Python backend, Azure OpenAI integration with prompt engineering patterns.</p>
-        <div class="repo-footer">
-          <span class="repo-lang"><span class="repo-dot" style="background:#3776AB"></span>Python + TypeScript</span>
-        </div>
-      </div>
-
-      <div class="repo-card">
-        <div class="repo-card-top">
-          <span class="repo-name">📐 config-driven-ui-framework</span>
-          <span class="repo-badge badge-soon">Coming Soon</span>
-        </div>
-        <p class="repo-desc">Configuration-driven UI rendering framework — same pattern powering dynamic screen rendering for OTT platform serving 1.1M+ weekly users.</p>
-        <div class="repo-footer">
-          <span class="repo-lang"><span class="repo-dot" style="background:#3178C6"></span>TypeScript</span>
-        </div>
-      </div>
-
-    </div>
-    <div class="github-cta">
-      <a href="https://github.com/pimohan?tab=repositories" target="_blank">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-        View all repositories on GitHub
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- CERTIFICATIONS -->
-<section>
-  <div class="section-inner">
-    <p class="section-label">Certifications</p>
-    <div class="divider"></div>
-    <h2 class="section-title">Learning & Credentials</h2>
-    <p class="section-desc">Actively upskilling in AI engineering and cloud-native development to stay at the frontier of modern platform engineering.</p>
-    <div class="certs-grid">
-      <div class="cert-card">
-        <div class="cert-icon ai">🤖</div>
-        <div>
-          <div class="cert-name">Gen AI Architect Program</div>
-          <div class="cert-issuer">Social Eagle</div>
-          <span class="cert-status cert-progress">In Progress · 2026</span>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-icon ai">☁️</div>
-        <div>
-          <div class="cert-name">Azure Gen AI & Agentic AI Engineer</div>
-          <div class="cert-issuer">Scholarhat · Microsoft</div>
-          <span class="cert-status cert-progress">In Progress · 2026</span>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-icon ms">🏆</div>
-        <div>
-          <div class="cert-name">Microsoft Certified Professional</div>
-          <div class="cert-issuer">HTML5, JavaScript & CSS3 · Exam 70-480</div>
-          <span class="cert-status cert-done">Certified</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="bg2" id="contact">
-  <div class="section-inner">
-    <div class="contact-grid">
-      <div>
-        <p class="section-label">Contact</p>
+    <!-- SPECIALIZATIONS -->
+    <section class="bg2">
+      <div class="section-inner">
+        <p class="section-label">Architecture Specializations</p>
         <div class="divider"></div>
-        <h2 class="section-title">Let's Connect</h2>
-        <p class="section-desc" style="margin-bottom:0">Open to Principal Frontend Engineer, Staff Engineer, and Frontend Architect roles in fintech, OTT, SaaS, and enterprise platform teams — Chennai, Hyderabad, Bangalore, Remote, UAE, Singapore, or International.</p>
+        <h2 class="section-title">Technical Depth</h2>
+        <p class="section-desc">
+          Architecture domains I own end-to-end as an individual contributor —
+          from design decision to production delivery.
+        </p>
+        <div class="spec-grid">
+          <span class="spec-tag">Frontend Platform Engineering</span>
+          <span class="spec-tag">Micro-Frontend Architecture</span>
+          <span class="spec-tag">Nx Monorepo Platforms</span>
+          <span class="spec-tag">Module Federation</span>
+          <span class="spec-tag">Design Systems</span>
+          <span class="spec-tag">Developer Experience (DX)</span>
+          <span class="spec-tag">Performance Engineering</span>
+          <span class="spec-tag">Build Infrastructure</span>
+          <span class="spec-tag">Technical Strategy</span>
+          <span class="spec-tag">Platform Governance</span>
+          <span class="spec-tag">AI-Augmented Engineering</span>
+          <span class="spec-tag">Architecture Decision Records (ADR)</span>
+          <span class="spec-tag">Technical Mentorship</span>
+          <span class="spec-tag">Config-Driven UI Frameworks</span>
+          <span class="spec-tag">Real-Time Data Visualization</span>
+        </div>
       </div>
-      <div class="contact-links">
-        <a href="mailto:pimohan.mca@gmail.com" class="contact-link">
-          <div class="contact-link-icon">✉️</div>
-          <div><div class="contact-link-label">Email</div><div class="contact-link-val">pimohan.mca@gmail.com</div></div>
-        </a>
-        <a href="https://linkedin.com/in/indiramohan-prakasam-b03b4867" class="contact-link" target="_blank">
-          <div class="contact-link-icon">💼</div>
-          <div><div class="contact-link-label">LinkedIn</div><div class="contact-link-val">indiramohan-prakasam-b03b4867</div></div>
-        </a>
-        <a href="https://github.com/pimohan" class="contact-link" target="_blank">
-          <div class="contact-link-icon">🐙</div>
-          <div><div class="contact-link-label">GitHub</div><div class="contact-link-val">github.com/pimohan</div></div>
-        </a>
-        <a href="tel:+919600086920" class="contact-link">
-          <div class="contact-link-icon">📱</div>
-          <div><div class="contact-link-label">Phone</div><div class="contact-link-val">+91-9600086920</div></div>
-        </a>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-inner">
+        <p class="section-label">Technical Skills</p>
+        <div class="divider"></div>
+        <h2 class="section-title">What I Build With</h2>
+        <p class="section-desc">
+          Hands-on expertise across the full frontend platform stack — from
+          component architecture to build infrastructure.
+        </p>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <p class="skill-card-title">React & Frontend Platform</p>
+            <div class="skill-items">
+              <span class="skill-item">React 18/19</span
+              ><span class="skill-item">Next.js SSR/SSG/ISR</span>
+              <span class="skill-item">TypeScript</span
+              ><span class="skill-item">JavaScript ES6+</span>
+              <span class="skill-item">Redux Toolkit</span
+              ><span class="skill-item">React Query</span>
+              <span class="skill-item">Custom Hooks</span
+              ><span class="skill-item">Component Architecture</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <p class="skill-card-title">Architecture & Platform</p>
+            <div class="skill-items">
+              <span class="skill-item">Micro-Frontend</span
+              ><span class="skill-item">Module Federation</span>
+              <span class="skill-item">Nx Monorepo</span
+              ><span class="skill-item">Design Systems</span>
+              <span class="skill-item">Config-Driven UI</span
+              ><span class="skill-item">ADR Authoring</span>
+              <span class="skill-item">Platform Governance</span
+              ><span class="skill-item">Component Libraries</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <p class="skill-card-title">Performance & Build Tooling</p>
+            <div class="skill-items">
+              <span class="skill-item">Webpack 5</span
+              ><span class="skill-item">RSPack</span>
+              <span class="skill-item">Vite</span
+              ><span class="skill-item">Code Splitting</span>
+              <span class="skill-item">Lazy Loading</span
+              ><span class="skill-item">CDN Optimization</span>
+              <span class="skill-item">Web Workers</span
+              ><span class="skill-item">Core Web Vitals</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <p class="skill-card-title">UI, Visualization & Testing</p>
+            <div class="skill-items">
+              <span class="skill-item">Tailwind CSS</span
+              ><span class="skill-item">Material UI</span>
+              <span class="skill-item">Ant Design</span
+              ><span class="skill-item">AG Grid</span>
+              <span class="skill-item">Highcharts</span
+              ><span class="skill-item">D3.js</span>
+              <span class="skill-item">Jest</span
+              ><span class="skill-item">React Testing Library</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <p class="skill-card-title">Cloud & Integration</p>
+            <div class="skill-items">
+              <span class="skill-item">Node.js</span
+              ><span class="skill-item">Azure</span>
+              <span class="skill-item">Azure DevOps</span
+              ><span class="skill-item">REST APIs</span>
+              <span class="skill-item">gRPC Streaming</span
+              ><span class="skill-item">WebSockets</span>
+              <span class="skill-item">MongoDB</span
+              ><span class="skill-item">SQL Server</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <p class="skill-card-title">AI-Assisted Engineering</p>
+            <div class="skill-items">
+              <span class="skill-item">GitHub Copilot</span
+              ><span class="skill-item">Claude</span>
+              <span class="skill-item">ChatGPT</span
+              ><span class="skill-item">Prompt Engineering</span>
+              <span class="skill-item">AI Code Generation</span
+              ><span class="skill-item">AI-Assisted Debugging</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<footer>
-  <p>© 2026 <span>Indiramohan Prakasam</span> &nbsp;·&nbsp; Principal Frontend Engineer &nbsp;·&nbsp; <span>icodeeasy.com</span></p>
-</footer>
+    <!-- EXPERIENCE -->
+    <section class="bg2" id="experience">
+      <div class="section-inner">
+        <p class="section-label">Work Experience</p>
+        <div class="divider"></div>
+        <h2 class="section-title">18+ Years of Platform Engineering</h2>
+        <p class="section-desc">
+          Individual contributor track — owning technical architecture without
+          people management, across OTT, fintech, enterprise SaaS, and banking.
+        </p>
+        <div class="exp-list">
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">
+                  Principal Frontend Engineer
+                  <span class="exp-tag">Contract</span>
+                </div>
+                <div class="exp-company">
+                  Primesoft · Quickplay OTT (TVNZ) · 1.1M+ WAU
+                </div>
+              </div>
+              <span class="exp-dates">Nov 2025 – Apr 2026</span>
+            </div>
+            <p class="exp-desc">
+              Sole platform architect for Quickplay OTT. Authored Architecture
+              Decision Records and defined all platform architecture decisions
+              across Smart TV and web.
+            </p>
+            <div class="exp-metrics">
+              <span class="exp-metric">73% faster startup</span
+              ><span class="exp-metric">40% faster delivery</span>
+              <span class="exp-metric">30% productivity gain</span
+              ><span class="exp-metric">1.1M+ WAU</span>
+            </div>
+            <div class="exp-stack">
+              <span>React</span><span>Next.js</span><span>TypeScript</span
+              ><span>Webpack 5</span> <span>Tizen/webOS</span><span>CDN</span
+              ><span>Azure DevOps</span>
+            </div>
+          </div>
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">
+                  Frontend Architect <span class="exp-tag">Contract</span>
+                </div>
+                <div class="exp-company">
+                  Photon Interactive · JPMC Corporate Banking
+                </div>
+              </div>
+              <span class="exp-dates">Mar 2025 – Aug 2025</span>
+            </div>
+            <p class="exp-desc">
+              Designed Nx Monorepo + RSPack micro-frontend architecture for
+              JPMC. Authored API contract standards adopted across 3 backend
+              teams without management authority.
+            </p>
+            <div class="exp-metrics">
+              <span class="exp-metric">40% faster builds</span
+              ><span class="exp-metric">50+ enterprise modules</span>
+              <span class="exp-metric">10K+ enterprise users</span>
+            </div>
+            <div class="exp-stack">
+              <span>Nx Monorepo</span><span>RSPack</span
+              ><span>Module Federation</span> <span>React</span
+              ><span>TypeScript</span><span>Ant Design</span>
+            </div>
+          </div>
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Senior Lead Frontend Engineer</div>
+                <div class="exp-company">
+                  AX2 Technologies · Real-Time Trading Platform
+                </div>
+              </div>
+              <span class="exp-dates">Aug 2021 – Nov 2023</span>
+            </div>
+            <p class="exp-desc">
+              Technical architect for high-performance trading UI. Solved
+              critical performance problem (100K+ row virtualized rendering)
+              blocking the product roadmap for 6+ months.
+            </p>
+            <div class="exp-metrics">
+              <span class="exp-metric">40% lower latency</span
+              ><span class="exp-metric">500+ concurrent sessions</span>
+              <span class="exp-metric">100K+ row datasets</span>
+            </div>
+            <div class="exp-stack">
+              <span>React</span><span>gRPC</span><span>Web Workers</span>
+              <span>WebSockets</span><span>D3.js</span><span>SQL Server</span>
+            </div>
+          </div>
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Senior Frontend Engineer</div>
+                <div class="exp-company">
+                  Capita PTE Singapore · Enterprise HR Platform
+                </div>
+              </div>
+              <span class="exp-dates">May 2019 – Feb 2021</span>
+            </div>
+            <p class="exp-desc">
+              Architected enterprise HR platform with no-code form builder
+              supporting 20K+ employees. Designed workflow automation engine
+              with RBAC and dynamic form rendering.
+            </p>
+            <div class="exp-metrics">
+              <span class="exp-metric">20K+ employees</span
+              ><span class="exp-metric">30% config reduction</span>
+            </div>
+            <div class="exp-stack">
+              <span>React</span><span>TypeScript</span
+              ><span>No-Code Forms</span> <span>Workflow Automation</span
+              ><span>RBAC</span><span>SQL Server</span>
+            </div>
+          </div>
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">
+                  Earlier Career · Individual Contributor
+                </div>
+                <div class="exp-company">
+                  HPE · Experis (US) · Fabricnet · Highland · Satyam · Wipro
+                </div>
+              </div>
+              <span class="exp-dates">2004 – 2019</span>
+            </div>
+            <p class="exp-desc">
+              Enterprise frontend solutions for American Airlines, HNFS (3M+ US
+              military), Dell, Microsoft, Verizon, Citibank UK, and Capital One
+              across aviation, healthcare, fintech, and banking domains.
+            </p>
+            <div class="exp-stack">
+              <span>Angular</span><span>.NET</span><span>ASP.NET MVC</span>
+              <span>TIBCO EMS</span><span>SQL Server</span><span>WCF</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-</body>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-inner">
+        <p class="section-label">Key Platform Projects</p>
+        <div class="divider"></div>
+        <h2 class="section-title">Production Platforms I Architected</h2>
+        <p class="section-desc">
+          Real-world platforms built at scale — each with measurable business
+          impact and documented architecture decisions.
+        </p>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-header">
+              <span class="project-name">Quickplay OTT — TVNZ</span>
+              <span class="project-dur">6 months</span>
+            </div>
+            <p class="project-desc">
+              Scalable frontend platform for TVNZ's OTT streaming product
+              serving 1.1M+ weekly active users across Smart TVs and web. Sole
+              technical architect — authored all ADRs.
+            </p>
+            <div class="project-outcome">
+              <p>73% faster startup · 1.1M+ WAU · Tizen/webOS</p>
+            </div>
+            <div class="project-stack">
+              <span>React</span><span>Next.js</span><span>Webpack 5</span
+              ><span>CDN</span><span>Tizen</span><span>webOS</span>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-header">
+              <span class="project-name">Graphite UI — JPMC Banking</span>
+              <span class="project-dur">6 months</span>
+            </div>
+            <p class="project-desc">
+              Enterprise micro-frontend platform for JP Morgan Chase corporate
+              banking powering payments, reporting, and workflow modules for
+              10K+ enterprise users.
+            </p>
+            <div class="project-outcome">
+              <p>40% faster builds · 50+ modules · 10K+ users</p>
+            </div>
+            <div class="project-stack">
+              <span>Nx Monorepo</span><span>RSPack</span
+              ><span>Module Federation</span><span>React</span
+              ><span>Ant Design</span>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-header">
+              <span class="project-name">Sigma Viewer — Trading</span>
+              <span class="project-dur">24 months</span>
+            </div>
+            <p class="project-desc">
+              High-performance real-time trading UI with gRPC streaming, Web
+              Workers, and virtualized rendering for 100K+ row financial
+              datasets.
+            </p>
+            <div class="project-outcome">
+              <p>40% lower latency · 500+ concurrent sessions</p>
+            </div>
+            <div class="project-stack">
+              <span>React</span><span>gRPC</span><span>Web Workers</span
+              ><span>D3.js</span><span>WebSockets</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GITHUB -->
+    <section class="bg2" id="github">
+      <div class="section-inner">
+        <p class="section-label">GitHub — github.com/pimohan</p>
+        <div class="divider"></div>
+        <h2 class="section-title">Repositories & Open Source</h2>
+        <p class="section-desc">
+          Existing public repositories plus upcoming architecture showcases —
+          micro-frontend platforms, performance patterns, and AI integrations.
+        </p>
+
+        <div class="github-note">
+          <strong>Note on private repos:</strong> WebApp, AspNetWebAppUI,
+          stock-api, and stock-client are private repositories — not publicly
+          visible but demonstrate full-stack development across .NET,
+          JavaScript, and CSS. Architecture showcases for Principal-level
+          platform patterns are currently in development.
+        </div>
+
+        <div class="github-grid">
+          <!-- EXISTING PUBLIC REPOS -->
+          <a
+            href="https://github.com/pimohan/x-twitter"
+            target="_blank"
+            class="repo-card"
+          >
+            <div class="repo-card-top">
+              <span class="repo-name">x-twitter</span>
+              <span class="repo-badge badge-live">Public</span>
+            </div>
+            <p class="repo-desc">
+              Twitter/X UI clone built with TypeScript — demonstrating modern
+              React component architecture, responsive design patterns, and
+              social feed implementation.
+            </p>
+            <div class="repo-footer">
+              <span class="repo-lang"
+                ><span class="repo-dot" style="background: #3178c6"></span
+                >TypeScript</span
+              >
+              <span class="repo-updated">Feb 2025</span>
+            </div>
+          </a>
+
+          <a
+            href="https://github.com/pimohan/foodiedelight"
+            target="_blank"
+            class="repo-card"
+          >
+            <div class="repo-card-top">
+              <span class="repo-name">foodiedelight</span>
+              <span class="repo-badge badge-live">Public</span>
+            </div>
+            <p class="repo-desc">
+              Food delivery platform UI built with TypeScript — showcasing
+              product listing, cart management, and order workflow UI patterns
+              in a real-world consumer app.
+            </p>
+            
+            <div class="repo-footer">
+              
+              <span class="repo-lang"
+                ><span class="repo-dot" style="background: #3178c6"></span
+                >TypeScript</span
+              >
+              <span class="repo-updated">Aug 2024</span>
+            </div>
+          </a>
+
+          <a
+            href="https://github.com/pimohan/todo-simple-app"
+            target="_blank"
+            class="repo-card"
+          >
+            <div class="repo-card-top">
+              <span class="repo-name">todo-simple-app</span>
+              <span class="repo-badge badge-live">Public</span>
+            </div>
+            <p class="repo-desc">
+              Clean TypeScript task management application — demonstrating hooks
+              architecture, state management patterns, and component-driven
+              development best practices.
+            </p>
+            <div class="repo-footer">
+              <span class="repo-lang"
+                ><span class="repo-dot" style="background: #3178c6"></span
+                >TypeScript</span
+              >
+              <span class="repo-updated">Aug 2024</span>
+            </div>
+          </a>
+
+          <a
+            href="https://github.com/pimohan/mern-stocks"
+            target="_blank"
+            class="repo-card"
+          >
+            <div class="repo-card-top">
+              <span class="repo-name">mern-stocks</span>
+              <span class="repo-badge badge-live">Public</span>
+            </div>
+            <p class="repo-desc">
+              Full-stack MERN stock tracking application — React frontend with
+              Node.js/Express backend, MongoDB data layer, and real-time stock
+              data visualization.
+            </p>
+            <div class="repo-footer">
+              <span class="repo-lang"
+                ><span class="repo-dot" style="background: #a97bff"></span>CSS +
+                JavaScript</span
+              >
+              <span class="repo-updated">Aug 2021</span>
+            </div>
+          </a>
+
+          <!-- COMING SOON -->
+          <div class="repo-card">
+            <div class="repo-card-top">
+              <span class="repo-name">🏗️ nx-micro-frontend-platform</span>
+              <span class="repo-badge badge-soon">Coming Soon</span>
+            </div>
+            <p class="repo-desc">
+              Reference Nx Monorepo + Module Federation micro-frontend platform
+              with ADRs and architecture diagrams — same pattern used in JPMC
+              banking engagement.
+            </p>
+            <div class="repo-footer">
+              <span class="repo-lang"
+                ><span class="repo-dot" style="background: #3178c6"></span
+                >TypeScript</span
+              >
+            </div>
+          </div>
+
+          <div class="repo-card">
+            <div class="repo-card-top">
+              <span class="repo-name">⚡ react-performance-patterns</span>
+              <span class="repo-badge badge-soon">Coming Soon</span>
+            </div>
+            <p class="repo-desc">
+              Code splitting, lazy loading, virtualization, and Web Worker
+              patterns with before/after benchmarks and Core Web Vitals
+              improvements.
+            </p>
+            <div class="repo-footer">
+              <span class="repo-lang"
+                ><span class="repo-dot" style="background: #f7df1e"></span
+                >JavaScript</span
+              >
+            </div>
+          </div>
+
+          <div class="repo-card">
+            <div class="repo-card-top">
+              <span class="repo-name">🤖 ai-powered-react-fastapi</span>
+              <span class="repo-badge badge-soon">Coming Soon</span>
+            </div>
+            <p class="repo-desc">
+              Full-stack AI application — React + Next.js frontend, FastAPI
+              Python backend, Azure OpenAI integration with prompt engineering
+              patterns.
+            </p>
+            <div class="repo-footer">
+              <span class="repo-lang"
+                ><span class="repo-dot" style="background: #3776ab"></span
+                >Python + TypeScript</span
+              >
+            </div>
+          </div>
+
+          <div class="repo-card">
+            <div class="repo-card-top">
+              <span class="repo-name">📐 config-driven-ui-framework</span>
+              <span class="repo-badge badge-soon">Coming Soon</span>
+            </div>
+            <p class="repo-desc">
+              Configuration-driven UI rendering framework — same pattern
+              powering dynamic screen rendering for OTT platform serving 1.1M+
+              weekly users.
+            </p>
+            <div class="repo-footer">
+              <span class="repo-lang"
+                ><span class="repo-dot" style="background: #3178c6"></span
+                >TypeScript</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="github-cta">
+          <a href="https://github.com/pimohan?tab=repositories" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
+              />
+            </svg>
+            View all repositories on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section>
+      <div class="section-inner">
+        <p class="section-label">Certifications</p>
+        <div class="divider"></div>
+        <h2 class="section-title">Learning & Credentials</h2>
+        <p class="section-desc">
+          Actively upskilling in AI engineering and cloud-native development to
+          stay at the frontier of modern platform engineering.
+        </p>
+        <div class="certs-grid">
+          <div class="cert-card">
+            <div class="cert-icon ai">🤖</div>
+            <div>
+              <div class="cert-name">Gen AI Architect Program</div>
+              <div class="cert-issuer">Social Eagle</div>
+              <span class="cert-status cert-progress">In Progress · 2026</span>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon ai">☁️</div>
+            <div>
+              <div class="cert-name">Azure Gen AI & Agentic AI Engineer</div>
+              <div class="cert-issuer">Scholarhat · Microsoft</div>
+              <span class="cert-status cert-progress">In Progress · 2026</span>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon ms">🏆</div>
+            <div>
+              <div class="cert-name">Microsoft Certified Professional</div>
+              <div class="cert-issuer">
+                HTML5, JavaScript & CSS3 · Exam 70-480
+              </div>
+              <span class="cert-status cert-done">Certified</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="bg2" id="contact">
+      <div class="section-inner">
+        <div class="contact-grid">
+          <div>
+            <p class="section-label">Contact</p>
+            <div class="divider"></div>
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="section-desc" style="margin-bottom: 0">
+              Open to Principal Frontend Engineer, Staff Engineer, and Frontend
+              Architect roles in fintech, OTT, SaaS, and enterprise platform
+              teams — Chennai, Hyderabad, Bangalore, Remote, UAE, Singapore, or
+              International.
+            </p>
+          </div>
+          <div class="contact-links">
+            <a href="mailto:pimohan.mca@gmail.com" class="contact-link">
+              <div class="contact-link-icon">✉️</div>
+              <div>
+                <div class="contact-link-label">Email</div>
+                <div class="contact-link-val">pimohan.mca@gmail.com</div>
+              </div>
+            </a>
+            <a
+              href="https://linkedin.com/in/indiramohan-prakasam-b03b4867"
+              class="contact-link"
+              target="_blank"
+            >
+              <div class="contact-link-icon">💼</div>
+              <div>
+                <div class="contact-link-label">LinkedIn</div>
+                <div class="contact-link-val">
+                  indiramohan-prakasam-b03b4867
+                </div>
+              </div>
+            </a>
+            <a
+              href="https://github.com/pimohan"
+              class="contact-link"
+              target="_blank"
+            >
+              <div class="contact-link-icon">🐙</div>
+              <div>
+                <div class="contact-link-label">GitHub</div>
+                <div class="contact-link-val">github.com/pimohan</div>
+              </div>
+            </a>
+            <a href="tel:+919600086920" class="contact-link">
+              <div class="contact-link-icon">📱</div>
+              <div>
+                <div class="contact-link-label">Phone</div>
+                <div class="contact-link-val">+91-9600086920</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        © 2026 <span>Indiramohan Prakasam</span> &nbsp;·&nbsp; Principal
+        Frontend Engineer &nbsp;·&nbsp; <span>icodeeasy.com</span>
+      </p>
+    </footer>
+  </body>
 </html>
